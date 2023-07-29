@@ -1,6 +1,6 @@
 import { BunPlugin } from "bun";
-import fs from 'node:fs'
 import path from 'node:path'
+import fs from 'node:fs'
 import { CompilationOptions, type EntryPointConfig } from "dts-bundle-generator";
 
 type Options = Omit<EntryPointConfig, 'filePath'> & {
@@ -11,23 +11,30 @@ export const dtsGenerator = (options?: Options): BunPlugin => {
   return {
     name: 'bun-dts-generator',
     async setup(build) {
+      const { generateDtsBundle } = await import('dts-bundle-generator')
       const { compilationOptions, ...rest }  = options || {}
-      const config: Record<string, any> = {
-        compilationOptions,
-        entries: build.config.entrypoints.map((entry) => {
-          const dtsFile = entry.replace(/^.*\//, '').replace(/\.ts$/, '.d.ts')
-          return {
-            filePath: entry,
-            outFile: path.join(build.config.outdir || './dist', dtsFile),
-            ...rest
-          }
-        })
+
+      const entrypoints = [...build.config.entrypoints].sort()
+      const entries = entrypoints.map((entry) => {
+        return {
+          filePath: entry,
+          ...rest
+        }
+      })
+      const result = await generateDtsBundle(entries, compilationOptions)
+
+      const outDir = build.config.outdir || './dist'
+      if (!fs.existsSync(outDir)) {
+          fs.mkdirSync(outDir);
       }
 
-      await Bun.write('./dts-config-tmp.json', JSON.stringify(config))
-      const proc = Bun.spawn(['./node_modules/.bin/dts-bundle-generator', '--config', './dts-config-tmp.json'])
-      await proc.exited
-      fs.unlinkSync('./dts-config-tmp.json')
+      await Promise.all(
+        entrypoints.map((entry, index) => {
+          const dtsFile = entry.replace(/^.*\//, '').replace(/\.ts$/, '.d.ts')
+          const outFile = path.join(outDir, dtsFile)
+          return Bun.write(outFile, result[index])
+        })
+      )
     }
   }
 }
