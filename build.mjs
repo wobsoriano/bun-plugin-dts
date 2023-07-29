@@ -5,6 +5,6 @@ await Bun.build({
   outdir: './dist',
   minify: false,
   plugins: [dtsGenerator()],
-  external: ['dts-bundle-generator', 'node:path', 'node:fs']
+  external: ['dts-bundle-generator']
 })
 
