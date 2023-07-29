@@ -1,7 +1,7 @@
 import { BunPlugin } from "bun";
 import path from 'node:path'
 import fs from 'node:fs'
-import { CompilationOptions, type EntryPointConfig } from "dts-bundle-generator";
+import { generateDtsBundle, type CompilationOptions, type EntryPointConfig } from "dts-bundle-generator";
 
 type Options = Omit<EntryPointConfig, 'filePath'> & {
   compilationOptions?: CompilationOptions
@@ -11,7 +11,6 @@ export const dtsGenerator = (options?: Options): BunPlugin => {
   return {
     name: 'bun-dts-generator',
     async setup(build) {
-      const { generateDtsBundle } = await import('dts-bundle-generator')
       const { compilationOptions, ...rest }  = options || {}
 
       const entrypoints = [...build.config.entrypoints].sort()
