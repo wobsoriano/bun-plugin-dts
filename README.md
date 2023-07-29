@@ -5,7 +5,7 @@ A Bun plugin for generating `.d.ts` files.
 ## Install
 
 ```bash
-bun install bun-plugin-dts
+bun add -d bun-plugin-dts
 ```
 
 ## Usage
