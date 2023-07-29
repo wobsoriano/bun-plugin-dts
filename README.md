@@ -1,12 +1,26 @@
-# bun starter
+# bun-plugin-dts
 
-## Getting Started
+A Bun plugin for generating `.d.ts` files.
 
-Click the [Use this template](https://github.com/wobsoriano/bun-lib-starter/generate) button to create a new repository with the contents starter.
+## Install
 
-OR
+```bash
+bun install bun-plugin-dts
+```
 
-Run `bun create wobsoriano/bun-lib-starter ./my-lib`.
+## Usage
+
+```ts
+import dts from 'bun-plugin-dts'
+
+await Bun.build({
+  entrypoints: ['./src/index.ts'],
+  outdir: './dist',
+  plugins: [
+    dts()
+  ],
+})
+```
 
 ## License
 

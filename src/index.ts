@@ -6,7 +6,7 @@ type Options = Omit<EntryPointConfig, 'filePath'> & {
   compilationOptions?: CompilationOptions
 }
 
-export const dtsGenerator = (options?: Options): import('bun').BunPlugin => {
+const dts = (options?: Options): import('bun').BunPlugin => {
   return {
     name: 'bun-dts-generator',
     async setup(build) {
@@ -36,3 +36,5 @@ export const dtsGenerator = (options?: Options): import('bun').BunPlugin => {
     }
   }
 }
+
+export default dts

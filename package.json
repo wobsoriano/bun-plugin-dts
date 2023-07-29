@@ -1,9 +1,9 @@
 {
-  "name": "bun-dts-generator",
+  "name": "bun-plugin-dts",
   "version": "0.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "description": "Generate a dts bundle from your Bun entrypoints.",
+  "description": "A bun plugin for generating dts files",
   "scripts": {
     "build": "bun run build.mjs",
     "prepublishOnly": "bun run build",
@@ -16,12 +16,12 @@
     "bun"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/wobsoriano/bun-dts-generator#readme",
+  "homepage": "https://github.com/wobsoriano/bun-plugin-dts#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wobsoriano/bun-dts-generator.git"
+    "url": "git+https://github.com/wobsoriano/bun-plugin-dts.git"
   },
-  "bugs": "https://github.com/wobsoriano/bun-dts-generator/issues",
+  "bugs": "https://github.com/wobsoriano/bun-plugin-dts/issues",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "dependencies": {
     "dts-bundle-generator": "^8.0.1"
