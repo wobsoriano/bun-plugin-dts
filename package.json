@@ -16,12 +16,12 @@
     "bun"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/wobsoriano/pkg-name#readme",
+  "homepage": "https://github.com/wobsoriano/bun-dts-generator#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wobsoriano/pkg-name.git"
+    "url": "git+https://github.com/wobsoriano/bun-dts-generator.git"
   },
-  "bugs": "https://github.com/wobsoriano/pkg-name/issues",
+  "bugs": "https://github.com/wobsoriano/bun-dts-generator/issues",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "dependencies": {
     "dts-bundle-generator": "^8.0.1"
