@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "description": "",
+  "description": "Generate a dts bundle from your Bun entrypoints.",
   "scripts": {
     "build": "bun run build.mjs",
     "prepublishOnly": "bun run build",
