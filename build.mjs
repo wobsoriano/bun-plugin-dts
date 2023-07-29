@@ -7,6 +7,7 @@ await Bun.build({
   plugins: [
     dtsGenerator()
   ],
-  external: ['dts-bundle-generator']
+  target: 'node',
+  external: ['dts-bundle-generator'],
 })
 
