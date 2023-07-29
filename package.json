@@ -6,7 +6,8 @@
   "description": "",
   "scripts": {
     "build": "bun run build.mjs",
-    "prepublishOnly": "bun run build"
+    "prepublishOnly": "bun run build",
+    "release": "bumpp && npm publish"
   },
   "files": [
     "dist"
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "bun-types": "^0.7.1",
+    "bumpp": "^9.1.1",
     "typescript": "^5.1.6"
   }
 }
