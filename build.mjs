@@ -3,7 +3,7 @@ import { dtsGenerator } from "./src/index.js"
 await Bun.build({
   entrypoints: ['./src/index.ts'],
   outdir: './dist',
-  minify: false,
+  minify: true,
   plugins: [
     dtsGenerator()
   ],
