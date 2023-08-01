@@ -1,6 +1,6 @@
 import path from 'node:path'
 import fs from 'node:fs'
-import { generateDtsBundle, type CompilationOptions, type EntryPointConfig } from "dts-bundle-generator";
+import { generateDtsBundle, type CompilationOptions, type EntryPointConfig } from 'dts-bundle-generator'
 
 type Options = Omit<EntryPointConfig, 'filePath'> & {
   compilationOptions?: CompilationOptions
@@ -23,7 +23,7 @@ const dts = (options?: Options): import('bun').BunPlugin => {
 
       const outDir = build.config.outdir || './dist'
       if (!fs.existsSync(outDir)) {
-          fs.mkdirSync(outDir);
+          fs.mkdirSync(outDir)
       }
 
       await Promise.all(
