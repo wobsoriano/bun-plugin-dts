@@ -7,7 +7,9 @@
   "scripts": {
     "build": "bun run build.mjs",
     "prepublishOnly": "bun run build",
-    "release": "bumpp && npm publish"
+    "release": "bumpp && npm publish",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "files": [
     "dist"
@@ -27,6 +29,9 @@
     "dts-bundle-generator": "^8.0.1"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.39.8",
+    "eslint": "^8.45.0",
+    "eslint-plugin-import": "^2.27.5",
     "bun-types": "^0.7.1",
     "bumpp": "^9.1.1",
     "typescript": "^5.1.6"
