@@ -8,6 +8,5 @@ await Bun.build({
     dts()
   ],
   target: 'node',
-  external: ['dts-bundle-generator'],
+  external: ['dts-bundle-generator', 'get-tsconfig'],
 })
-

@@ -1,5 +1,6 @@
 import path from 'node:path'
 import fs from 'node:fs'
+import { getTsconfig } from 'get-tsconfig'
 import { generateDtsBundle, type CompilationOptions, type EntryPointConfig } from 'dts-bundle-generator'
 
 type Options = Omit<EntryPointConfig, 'filePath'> & {
@@ -10,7 +11,7 @@ const dts = (options?: Options): import('bun').BunPlugin => {
   return {
     name: 'bun-dts-generator',
     async setup(build) {
-      const { compilationOptions, ...rest }  = options || {}
+      const { compilationOptions, ...rest } = options || {}
 
       const entrypoints = [...build.config.entrypoints].sort()
       const entries = entrypoints.map((entry) => {
@@ -19,11 +20,16 @@ const dts = (options?: Options): import('bun').BunPlugin => {
           ...rest
         }
       })
-      const result = await generateDtsBundle(entries, compilationOptions)
+
+      const tsconfig = compilationOptions?.preferredConfigPath ?? getTsconfig()?.path
+      const result = generateDtsBundle(entries, {
+        ...compilationOptions,
+        preferredConfigPath: tsconfig
+      })
 
       const outDir = build.config.outdir || './dist'
       if (!fs.existsSync(outDir)) {
-          fs.mkdirSync(outDir)
+        fs.mkdirSync(outDir)
       }
 
       await Promise.all(

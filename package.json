@@ -26,7 +26,8 @@
   "bugs": "https://github.com/wobsoriano/bun-plugin-dts/issues",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "dependencies": {
-    "dts-bundle-generator": "^8.0.1"
+    "dts-bundle-generator": "^8.0.1",
+    "get-tsconfig": "^4.7.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.41.0",
