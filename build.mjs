@@ -10,4 +10,3 @@ await Bun.build({
   target: 'node',
   external: ['dts-bundle-generator'],
 })
-

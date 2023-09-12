@@ -34,6 +34,7 @@
     "bun-types": "^1.0.1",
     "eslint": "^8.49.0",
     "eslint-plugin-import": "^2.28.1",
+    "get-tsconfig": "^4.7.0",
     "typescript": "^5.2.2"
   }
 }
