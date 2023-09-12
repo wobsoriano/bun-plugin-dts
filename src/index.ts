@@ -9,7 +9,7 @@ type Options = Omit<EntryPointConfig, 'filePath'> & {
 
 const dts = (options?: Options): import('bun').BunPlugin => {
   return {
-    name: 'bun-dts-generator',
+    name: 'bun-plugin-dts',
     async setup(build) {
       const { compilationOptions, ...rest } = options || {}
 
