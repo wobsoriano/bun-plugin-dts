@@ -41,7 +41,7 @@ const dts = (options?: Options): import('bun').BunPlugin => {
 				entrypoints.map((entry, index) => {
 					const dtsFile = entry
 						.replace(/^.*\//, '')
-						.replace(/\.[jt]s$/, '.d.ts');
+						.replace(/\.[jtm]s$/, '.d.ts');
 					const outFile = path.join(outDir, dtsFile);
 					return Bun.write(outFile, result[index]);
 				}),
