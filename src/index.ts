@@ -39,7 +39,7 @@ const dts = (options?: Options): import('bun').BunPlugin => {
 
 			await Promise.all(
 				entrypoints.map((entry, index) => {
-					const dtsFile = entry.replace(/^.*\//, '').replace(/\.ts$/, '.d.ts');
+					const dtsFile = entry.replace(/^.*\//, '').replace(/\.[jt]s$/, '.d.ts');
 					const outFile = path.join(outDir, dtsFile);
 					return Bun.write(outFile, result[index]);
 				}),
