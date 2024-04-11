@@ -2,6 +2,7 @@
   "name": "bun-plugin-dts",
   "version": "0.2.1",
   "main": "dist/index.js",
+  "type": "module",
   "types": "dist/index.d.ts",
   "description": "A bun plugin for generating dts files",
   "scripts": {
