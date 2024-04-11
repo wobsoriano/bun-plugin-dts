@@ -28,7 +28,7 @@
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "dependencies": {
     "dts-bundle-generator": "^9.3.1",
-    "get-tsconfig": "^4.7.0"
+    "get-tsconfig": "^4.7.3"
   },
   "devDependencies": {
     "bumpp": "^9.2.0",
