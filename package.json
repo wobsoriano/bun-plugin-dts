@@ -27,13 +27,13 @@
   "bugs": "https://github.com/wobsoriano/bun-plugin-dts/issues",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "dependencies": {
-    "dts-bundle-generator": "^9.4.0",
+    "dts-bundle-generator": "^9.5.1",
     "get-tsconfig": "^4.7.3"
   },
   "devDependencies": {
     "@biomejs/biome": "1.2.2",
-    "bumpp": "^9.4.0",
-    "@types/bun": "^1.0.12",
+    "bumpp": "^9.6.1",
+    "@types/bun": "^1.1.10",
     "typescript": "^5.4.5"
   }
 }
