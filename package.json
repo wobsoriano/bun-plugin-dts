@@ -32,7 +32,7 @@
     "get-tsconfig": "^4.8.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.2.2",
+    "@biomejs/biome": "1.9.3",
     "bumpp": "^9.6.1",
     "@types/bun": "^1.1.10",
     "typescript": "^5.4.5"
