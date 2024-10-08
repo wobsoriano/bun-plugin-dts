@@ -1,12 +1,25 @@
+import type { BuildConfig } from 'bun'
 import dts from "./src/index.js"
 
-await Bun.build({
+const defaultBuildConfig: BuildConfig = {
   entrypoints: ['./src/index.ts'],
   outdir: './dist',
   minify: true,
-  plugins: [
-    dts()
-  ],
   target: 'node',
   external: ['dts-bundle-generator', 'get-tsconfig'],
-})
+}
+
+await Promise.all([
+  Bun.build({
+    ...defaultBuildConfig,
+    plugins: [dts()],
+    format: 'esm',
+    naming: "[dir]/[name].js",
+  }),
+  Bun.build({
+    ...defaultBuildConfig,
+    // @ts-expect-error: Missing type
+    format: 'cjs',
+    naming: "[dir]/[name].cjs",
+  })
+])

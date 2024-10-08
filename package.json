@@ -1,9 +1,15 @@
 {
   "name": "bun-plugin-dts",
   "version": "0.2.4",
-  "main": "dist/index.js",
   "type": "module",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
   "description": "A bun plugin for generating dts files",
   "scripts": {
     "build": "bun run build.ts",
