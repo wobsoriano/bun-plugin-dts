@@ -6,6 +6,7 @@ import {
 	generateDtsBundle,
 } from 'dts-bundle-generator';
 import { getTsconfig } from 'get-tsconfig';
+import commonPathPrefix from 'common-path-prefix';
 
 type Options = Omit<EntryPointConfig, 'filePath'> & {
 	compilationOptions?: CompilationOptions;
@@ -34,15 +35,28 @@ const dts = (options?: Options): import('bun').BunPlugin => {
 
 			const outDir = build.config.outdir || './dist';
 			if (!fs.existsSync(outDir)) {
-				fs.mkdirSync(outDir);
+				fs.mkdirSync(outDir, { recursive: true });
+			}
+
+			let commonPrefix = commonPathPrefix(entrypoints);
+
+			// If commonPrefix is empty or equals the current working directory,
+			// use the parent directory of the first entrypoint
+			if (!commonPrefix || commonPrefix === process.cwd()) {
+				commonPrefix = path.dirname(entrypoints[0]);
 			}
 
 			await Promise.all(
 				entrypoints.map((entry, index) => {
-					const dtsFile = entry
-						.replace(/^.*\//, '')
-						.replace(/\.[jtm]s$/, '.d.ts');
+					const relativePath = path.relative(commonPrefix, entry);
+					const dtsFile = relativePath.replace(/\.[jtm]s$/, '.d.ts');
 					const outFile = path.join(outDir, dtsFile);
+					const outFileDir = path.dirname(outFile);
+
+					if (!fs.existsSync(outFileDir)) {
+						fs.mkdirSync(outFileDir, { recursive: true });
+					}
+
 					return Bun.write(outFile, result[index]);
 				}),
 			);
