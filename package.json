@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "description": "A bun plugin for generating dts files",
   "scripts": {
-    "build": "bun run build.mjs",
+    "build": "bun run build.ts",
     "prepublishOnly": "bun run build",
     "release": "bumpp && npm publish",
     "lint": "biome check src",
@@ -27,6 +27,7 @@
   "bugs": "https://github.com/wobsoriano/bun-plugin-dts/issues",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "dependencies": {
+    "common-path-prefix": "^3.0.0",
     "dts-bundle-generator": "^9.5.1",
     "get-tsconfig": "^4.8.1"
   },
