@@ -14,14 +14,14 @@ bun add -d bun-plugin-dts
 import dts from 'bun-plugin-dts'
 
 await Bun.build({
-  entrypoints: ['./src/index.ts', './src/other.ts'],
+  entrypoints: ['./src/index.ts', './src/other/foo.ts'],
   outdir: './dist',
   plugins: [
     dts()
   ],
 })
 
-// Generates `dist/index.d.ts` and `dist/other.d.ts`
+// Generates `dist/index.d.ts` and `dist/other/foo.d.ts`
 ```
 
 ## Options
