@@ -28,7 +28,7 @@
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "dependencies": {
     "dts-bundle-generator": "^9.5.1",
-    "get-tsconfig": "^4.7.3"
+    "get-tsconfig": "^4.8.1"
   },
   "devDependencies": {
     "@biomejs/biome": "1.2.2",
