@@ -7,12 +7,13 @@ import {
 } from 'dts-bundle-generator';
 import { getTsconfig } from 'get-tsconfig';
 import commonPathPrefix from 'common-path-prefix';
+import type { BunPlugin } from 'bun';
 
 type Options = Omit<EntryPointConfig, 'filePath'> & {
 	compilationOptions?: CompilationOptions;
 };
 
-const dts = (options?: Options): import('bun').BunPlugin => {
+const dts = (options?: Options): BunPlugin => {
 	return {
 		name: 'bun-plugin-dts',
 		async setup(build) {
@@ -23,6 +24,10 @@ const dts = (options?: Options): import('bun').BunPlugin => {
 				return {
 					filePath: entry,
 					...rest,
+					libraries: {
+						allowedTypesLibraries: ['node', ...(rest.libraries?.allowedTypesLibraries || [])],
+						...rest.libraries,
+					},
 				};
 			});
 

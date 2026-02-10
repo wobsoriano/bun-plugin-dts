@@ -4,7 +4,7 @@ import dts from "./src/index.js"
 const defaultBuildConfig: BuildConfig = {
   entrypoints: ['./src/index.ts'],
   outdir: './dist',
-  minify: true,
+  minify: false,
   target: 'node',
   external: ['dts-bundle-generator', 'get-tsconfig'],
 }
@@ -18,7 +18,6 @@ await Promise.all([
   }),
   Bun.build({
     ...defaultBuildConfig,
-    // @ts-expect-error: Missing type
     format: 'cjs',
     naming: "[dir]/[name].cjs",
   })
