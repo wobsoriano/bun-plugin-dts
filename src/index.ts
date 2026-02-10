@@ -1,13 +1,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import type { BunPlugin } from 'bun';
+import commonPathPrefix from 'common-path-prefix';
 import {
 	type CompilationOptions,
 	type EntryPointConfig,
 	generateDtsBundle,
 } from 'dts-bundle-generator';
 import { getTsconfig } from 'get-tsconfig';
-import commonPathPrefix from 'common-path-prefix';
-import type { BunPlugin } from 'bun';
 
 type Options = Omit<EntryPointConfig, 'filePath'> & {
 	compilationOptions?: CompilationOptions;
@@ -25,7 +25,10 @@ const dts = (options?: Options): BunPlugin => {
 					filePath: entry,
 					...rest,
 					libraries: {
-						allowedTypesLibraries: ['node', ...(rest.libraries?.allowedTypesLibraries || [])],
+						allowedTypesLibraries: [
+							'node',
+							...(rest.libraries?.allowedTypesLibraries || []),
+						],
 						...rest.libraries,
 					},
 				};

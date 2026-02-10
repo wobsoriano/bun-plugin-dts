@@ -1,4 +1,4 @@
-import { test, expect, beforeEach, afterEach } from 'bun:test';
+import { afterEach, beforeEach, expect, test } from 'bun:test';
 import dts from './index';
 
 const TEST_DIR = './test-output';
@@ -48,7 +48,9 @@ test('creates output directory if it does not exist', async () => {
 	});
 
 	expect(result.success).toBe(true);
-	expect(await Bun.file(`${TEST_DIR}/nested/dir/simple.d.ts`).exists()).toBe(true);
+	expect(await Bun.file(`${TEST_DIR}/nested/dir/simple.d.ts`).exists()).toBe(
+		true,
+	);
 });
 
 test('generated .d.ts contains expected exports', async () => {
