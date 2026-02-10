@@ -15,7 +15,6 @@
     "build": "bun run build.ts",
     "test": "bun test",
     "prepublishOnly": "bun run build",
-    "release": "changeset publish",
     "lint": "biome check src",
     "format": "biome format src --write"
   },
@@ -40,7 +39,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.3",
-    "@changesets/cli": "^2.29.8",
     "@types/bun": "^1.3.9",
     "typescript": "^5.4.5"
   }
