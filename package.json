@@ -13,6 +13,7 @@
   "description": "A bun plugin for generating dts files",
   "scripts": {
     "build": "bun run build.ts",
+    "test": "bun test",
     "prepublishOnly": "bun run build",
     "release": "bumpp && npm publish",
     "lint": "biome check src",
